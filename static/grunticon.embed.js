@@ -53,8 +53,9 @@
 
 	// embed an icon of a particular name ("icon-foo") in all elements with that icon class
 	// and remove its background image
-	var embedIcons = function(icons){
+	var embedIcons = function(icons, scope){
 		var selectedElems, filteredElems, embedAttr, selector;
+        scope = scope || document;
 
 		// attr to specify svg embedding
 		embedAttr = "data-grunticon-embed";
@@ -64,7 +65,7 @@
 
 			try {
 				// get ALL of the elements matching the selector
-				selectedElems = document.querySelectorAll( selector );
+				selectedElems = scope.querySelectorAll( selector );
 			} catch (er) {
 				// continue further with embeds even though it failed for this icon
 				continue;
